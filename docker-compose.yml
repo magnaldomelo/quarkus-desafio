@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  microservice.a:
+    image: magnaldomelo/coopersystem.challenge:1.0.0-SNAPSHOT
+    build:
+      context: ./microservice.a
+      dockerfile: Dockerfile
+    ports:
+      - "8181:8080"
+  microservice.b:
+    image: magnaldomelo/coopersystem.challenge:1.0.0-SNAPSHOT
+    build:
+      context: ./microservice.b
+      dockerfile: Dockerfile
+    ports:
+      - "8282:8080"
+    depends_on:
+        - microservice.a
